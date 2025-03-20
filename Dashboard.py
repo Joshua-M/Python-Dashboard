@@ -29,12 +29,13 @@ bg_image = st.file_uploader("Upload Background Image (PNG)", type=["png"])
 if bg_image is not None:
     set_background(bg_image)
 
-st.title(" :bar_chart: Exploratory Data Analysis")
+st.title(" :bar_chart: MIH - Exploratory Data Analysis")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # File Uploader for Data
 df = None
-fl = st.file_uploader(":file_folder: Upload a file", type=["csv", "txt", "xlsx", "xls"])else:
+fl = st.file_uploader(":file_folder: Upload a file", type=["csv", "txt", "xlsx", "xls"])
+if fl is None:
     sample_file = "Sample - Superstore.xls"
     if os.path.exists(sample_file):
         df = pd.read_excel(sample_file, engine='xlrd')  # Specify engine for .xls files
