@@ -29,7 +29,7 @@ bg_image = st.file_uploader("Upload Background Image (PNG)", type=["png"])
 if bg_image is not None:
     set_background(bg_image)
 
-st.title(" :bar_chart:Exploratory Data Analysis")
+st.title(" :bar_chart: Exploratory Data Analysis")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # File Uploader for Data
