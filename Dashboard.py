@@ -36,12 +36,12 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 df = None
 fl = st.file_uploader(":file_folder: Upload a file", type=["csv", "txt", "xlsx", "xls"])
 if fl is not None:
-    df = pd.read_excel(fl) if "xls" in fl.name else pd.read_csv(fl)
+    df = pd.read_excel(fl, engine='openpyxl') if "xlsx" in fl.name else pd.read_excel(fl, engine='xlrd') if "xls" in fl.name else pd.read_csv(fl)
     st.write(f"Loaded file: {fl.name}")
 else:
     sample_file = "Sample - Superstore.xls"
     if os.path.exists(sample_file):
-        df = pd.read_excel(sample_file)
+        df = pd.read_excel(sample_file, engine='xlrd')  # Specify engine for .xls files
         st.write("Loaded default dataset.")
     else:
         st.error("No file uploaded and default dataset is missing. Please upload a file.")
