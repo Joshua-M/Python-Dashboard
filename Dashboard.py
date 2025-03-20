@@ -7,27 +7,9 @@ import base64
 
 warnings.filterwarnings('ignore')
 
-# Function to set background image
-def set_background(png_file):
-    if png_file is not None:
-        encoded_image = base64.b64encode(png_file.getvalue()).decode("utf-8")
-        page_bg_img = f'''
-            <style>
-                body {{
-                    background-image: url("data:image/png;base64,{encoded_image}");
-                    background-size: cover;
-                }}
-            </style>
-        '''
-        st.markdown(page_bg_img, unsafe_allow_html=True)
-
 # Set the page config
 st.set_page_config(page_title="Dashboard", page_icon='bar_chart', layout='wide')
 
-# Upload Background Image
-bg_image = st.file_uploader("Upload Background Image (PNG)", type=["png"])
-if bg_image is not None:
-    set_background(bg_image)
 
 st.title(" :bar_chart: Exploratory Data Analysis")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
