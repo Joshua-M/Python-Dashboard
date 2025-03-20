@@ -29,15 +29,12 @@ bg_image = st.file_uploader("Upload Background Image (PNG)", type=["png"])
 if bg_image is not None:
     set_background(bg_image)
 
-st.title(" :bar_chart: Exploratory Data Analysis")
+st.title(" :bar_chart: MIH - Exploratory Data Analysis")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # File Uploader for Data
 df = None
-fl = st.file_uploader(":file_folder: Upload a file", type=["csv", "txt", "xlsx", "xls"])
-if fl is not None:
-    df = pd.read_excel(fl, engine='openpyxl') if "xlsx" in fl.name else pd.read_excel(fl, engine='xlrd') if "xls" in fl.name else pd.read_csv(fl)
-    st.write(f"Loaded file: {fl.name}")
+fl = 
 else:
     sample_file = "Sample - Superstore.xls"
     if os.path.exists(sample_file):
@@ -95,6 +92,10 @@ if df is not None:
     linechart = filtered_df.groupby(filtered_df["month_year"].astype(str))["Sales"].sum().reset_index()
     fig2 = px.line(linechart, x="month_year", y="Sales", labels={"Sales": "Amount"}, height=500, template="gridon")
     st.plotly_chart(fig2, use_container_width=True)
+    
+    # Summary Table (Full Data Table)
+    st.subheader("Full Data Table")
+    st.write(filtered_df)
     
     # Download Processed Data
     csv = filtered_df.to_csv(index=False).encode('utf-8')
